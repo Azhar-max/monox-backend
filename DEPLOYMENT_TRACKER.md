@@ -1,31 +1,79 @@
 # MANOX Deployment Tracker
 
-Use this checklist to track your deployment progress to Vercel (frontend) and Render (backend).
+This document tracks the deployment progress of the MANOX e-commerce platform to Vercel (frontend) and Render (backend).
 
-## Pre-Deployment Tasks
+## Prerequisites
+### GitHub Account
+- [x] Create GitHub account
+- [x] Verify email address
 
-### GitHub Repository
-- [ ] Create GitHub repository
-- [ ] Push code to GitHub repository
-  ```bash
-  git remote add origin https://github.com/your-username/your-repo-name.git
-  git branch -M main
-  git push -u origin main
-  ```
-
-### MongoDB Atlas Setup
+### MongoDB Atlas Account
 - [ ] Create MongoDB Atlas account
-- [ ] Create project named "MANOX"
-- [ ] Create free cluster
-- [ ] Create database user
-- [ ] Configure network access (0.0.0.0/0)
-- [ ] Get connection string
-  ```
-  mongodb+srv://manox_user:<password>@your-cluster-url/manox?retryWrites=true&w=majority
-  ```
+- [ ] Verify email address
+
+### Vercel Account
+- [x] Create Vercel account
+- [ ] Verify email address
+
+### Render Account
+- [x] Create Render account
+- [ ] Verify email address
+
+## Repository Setup
+### Create Repository
+- [x] Go to https://github.com
+- [x] Click "New" → "Repository"
+- [x] Name repository "manox"
+- [x] Set visibility to Public
+- [x] Do NOT initialize with README
+- [x] Click "Create repository"
+
+### Push Code
+- [x] Open terminal in project root
+- [x] Run: `git remote add origin https://github.com/Azhar-max/manox.git`
+- [x] Run: `git push -u origin main`
+- [x] Verify code is pushed to GitHub
+
+## MongoDB Atlas Setup
+### Create Project
+- [ ] Go to https://www.mongodb.com/cloud/atlas
+- [ ] Click "Create" → "Project"
+- [ ] Name project "MANOX"
+- [ ] Click "Next" → "Create Project"
+
+### Create Cluster
+- [ ] Click "Build a Database"
+- [ ] Select "Shared" tier (Free forever)
+- [ ] Choose AWS provider
+- [ ] Select region closest to users
+- [ ] Name cluster "manox-cluster"
+- [ ] Click "Create Cluster"
+
+### Create Database User
+- [ ] Click "Database Access" in sidebar
+- [ ] Click "Add New Database User"
+- [ ] Select "Password" authentication method
+- [ ] Enter username "manox-user"
+- [ ] Generate and save strong password
+- [ ] Select "Atlas admin" privileges
+- [ ] Click "Add User"
+
+### Configure Network Access
+- [ ] Click "Network Access" in sidebar
+- [ ] Click "Add IP Address"
+- [ ] Select "Allow Access from Anywhere" (0.0.0.0/0)
+- [ ] Add comment "MANOX deployment"
+- [ ] Click "Confirm"
+
+### Get Connection String
+- [ ] Click "Database" in sidebar
+- [ ] Click "Connect" on cluster
+- [ ] Select "Connect your application"
+- [ ] Copy connection string
+- [ ] Replace `<password>` with actual password
+- [ ] Replace `myFirstDatabase` with `manox`
 
 ## Render Backend Deployment
-
 ### Create Web Service
 - [ ] Go to https://render.com
 - [ ] Click "New" → "Web Service"
@@ -39,110 +87,85 @@ Use this checklist to track your deployment progress to Vercel (frontend) and Re
   - Build Command: `npm install`
   - Start Command: `npm start`
   - Instance Type: Free
-
-### Add Environment Variables
-- [ ] Add these environment variables:
-  ```
-  MONGO_URI=[Your MongoDB connection string]
-  JWT_SECRET=[Strong secret key - at least 32 characters]
-  FRONTEND_URL=[Placeholder - will update after Vercel deployment]
-  PORT=10000
-  ```
-
+- [ ] Add environment variables:
+  - `MONGO_URI` = [Your MongoDB connection string]
+  - `JWT_SECRET` = [Generate strong secret - at least 32 characters]
+  - `FRONTEND_URL` = [Placeholder - will update after Vercel deployment]
+  - `PORT` = 10000
 - [ ] Click "Create Web Service"
 - [ ] Wait for deployment to complete
-- [ ] Note Render URL: ________________________________
+- [ ] Note Render URL
 
 ## Vercel Frontend Deployment
-
 ### Create Project
-- [ ] Go to https://vercel.com
+- [ ] Go to https://vercel.com/dashboard
 - [ ] Click "New Project"
 - [ ] Import GitHub repository
 - [ ] Configure project:
-  - Project Name: manox-frontend
   - Framework Preset: Vite
   - Root Directory: frontend
   - Build Command: `npm run build`
-  - Output Directory: `dist`
+  - Output Directory: dist
   - Install Command: `npm install`
-
-### Add Environment Variables
-- [ ] Add this environment variable:
-  ```
-  VITE_API_URL=[Placeholder - will update after Render deployment]
-  ```
-
+- [ ] Add environment variables:
+  - `VITE_API_URL` = [Placeholder - will update after Render deployment]
 - [ ] Click "Deploy"
 - [ ] Wait for deployment to complete
-- [ ] Note Vercel URL: ________________________________
+- [ ] Note Vercel URL
 
 ## Update Environment Variables
-
-### Update Render Backend
+### Update Render
 - [ ] Go to Render dashboard
-- [ ] Click on manox-backend service
-- [ ] Go to "Environment" tab
-- [ ] Update `FRONTEND_URL` to your Vercel URL:
-  ```
-  https://your-vercel-project.vercel.app
-  ```
+- [ ] Click on "manox-backend" service
+- [ ] Click "Environment" in sidebar
+- [ ] Update `FRONTEND_URL` to Vercel URL
 - [ ] Click "Save Changes"
 - [ ] Wait for redeployment
 
-### Update Vercel Frontend
+### Update Vercel
 - [ ] Go to Vercel dashboard
-- [ ] Click on manox-frontend project
+- [ ] Click on MANOX project
 - [ ] Go to "Settings" → "Environment Variables"
-- [ ] Update `VITE_API_URL` to your Render URL + `/api`:
-  ```
-  https://your-render-service.onrender.com/api
-  ```
-- [ ] Redeploy project
+- [ ] Update `VITE_API_URL` to Render URL + `/api`
+- [ ] Click "Save"
+- [ ] Trigger redeployment
 
 ## Final Testing
-
-### Website Functionality
+### Frontend Testing
 - [ ] Visit Vercel URL
-- [ ] Test homepage
+- [ ] Test homepage loading
 - [ ] Browse products
 - [ ] Test shopping cart
 - [ ] Submit contact form
 - [ ] Test chat support
 - [ ] Test multi-language toggle
+- [ ] Test dark/light theme toggle
 
-### Admin Panel
-- [ ] Go to `/admin/login`
-- [ ] Test admin login
-- [ ] Test dashboard
+### Admin Panel Testing
+- [ ] Visit Vercel URL + `/admin`
+- [ ] Log in with admin credentials
+- [ ] Test dashboard loading
 - [ ] Test product management
 - [ ] Test order management
 - [ ] Test user management
 - [ ] Test settings
 
-## Post-Deployment Tasks
+### API Testing
+- [ ] Test products API: Render URL + `/api/products`
+- [ ] Test users API: Render URL + `/api/users`
+- [ ] Test orders API: Render URL + `/api/orders`
+- [ ] Test auth API: Render URL + `/api/auth/login`
 
-### Domain Configuration (Optional)
-- [ ] Configure custom domain for frontend (Vercel)
-- [ ] Configure custom domain for backend (Render - optional)
+### Performance Testing
+- [ ] Test page load times
+- [ ] Test mobile responsiveness
+- [ ] Test cross-browser compatibility
 
-### Security
-- [ ] Update MongoDB network access to specific IPs (instead of 0.0.0.0/0)
-- [ ] Rotate JWT secret if using default
-- [ ] Verify HTTPS is working
+## Completion
+- [ ] All deployment steps completed
+- [ ] All environment variables correctly set
+- [ ] All functionality tested and working
+- [ ] Performance optimized
+- [ ] Ready for production use
 
-### Monitoring
-- [ ] Set up uptime monitoring
-- [ ] Configure error tracking
-- [ ] Set up performance monitoring
-
-## Deployment Complete
-
-- [ ] All checklist items completed
-- [ ] Website is accessible and functional
-- [ ] Admin panel is accessible and functional
-- [ ] All environment variables are correctly set
-- [ ] Database is properly connected
-- [ ] API endpoints are working
-
-🎉 **Congratulations! Your MANOX e-commerce platform is now deployed and ready for production use.**
+🎉 **MANOX e-commerce platform is ready for production!**

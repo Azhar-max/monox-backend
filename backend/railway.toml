@@ -8,3 +8,5 @@ restartPolicyType = "never"
 [environment]
 NODE_ENV = "production"
 PORT = "3002"
+MONGO_URI = "mongodb+srv://manox_admin:%40Qwerty135@manoxcluster.jzhhwxt.mongodb.net/manox?retryWrites=true&w=majority"
+JWT_SECRET = "manox_secret_key_2025"

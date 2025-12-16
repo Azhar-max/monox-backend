@@ -65,6 +65,12 @@ app.use((err, req, res, next) => {
 const PORT = process.env.PORT || 5000;
 const MONGO = process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/manox';
 
+// Debug environment variables
+console.log('[DEBUG] Environment variables:');
+console.log('[DEBUG] MONGO_URI:', process.env.MONGO_URI ? 'SET' : 'NOT SET');
+console.log('[DEBUG] PORT:', process.env.PORT || 'NOT SET, using default');
+console.log('[DEBUG] NODE_ENV:', process.env.NODE_ENV || 'NOT SET');
+
 async function start(){
   try {
     console.log('[DEBUG] Connecting to MongoDB at', MONGO);

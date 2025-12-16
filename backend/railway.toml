@@ -1,0 +1,10 @@
+[build]
+builder = "nixpacks"
+
+[deploy]
+startCommand = "node server.js"
+restartPolicyType = "never"
+
+[environment]
+NODE_ENV = "production"
+PORT = "3002"

@@ -21,6 +21,11 @@ app.use('/assets', express.static(path.join(__dirname, '..', 'frontend', 'public
 
 app.get('/api/health', (req,res) => res.json({ ok: true, now: new Date().toISOString() }));
 
+// Railway health check endpoint
+app.get('/health', (req, res) => {
+  res.status(200).json({ status: 'ok', timestamp: new Date().toISOString() });
+});
+
 console.log('[DEBUG] Loading routes...');
 try {
   app.use('/api/auth', require('./src/routes/auth'));

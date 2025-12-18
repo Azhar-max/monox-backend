@@ -76,8 +76,6 @@ async function start(){
     console.log('[DEBUG] Connecting to MongoDB at', MONGO);
     // Add proper connection options for MongoDB
     await mongoose.connect(MONGO, { 
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
       serverSelectionTimeoutMS: 5000, // Timeout after 5s instead of default 30s
       socketTimeoutMS: 45000, // Close sockets after 45 seconds of inactivity
     });

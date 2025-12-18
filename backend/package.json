@@ -10,6 +10,7 @@
     "dev": "nodemon server.js",
     "start:prod": "NODE_ENV=production node server.js",
     "health": "node -e 'console.log(\"OK\")'",
+        "docker:health": "curl -f http://localhost:3002/health || exit 1",
     "seed": "node seed.js"
   },
   "dependencies": {

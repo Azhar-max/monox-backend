@@ -1,0 +1,15 @@
+# Nixpacks configuration for MANOX backend
+[phases.setup]
+name = "Setup Node.js"
+nixPkgs = ["nodejs_18", "npm"]
+
+[phases.install]
+name = "Install Dependencies"
+cmds = ["cd backend && npm install"]
+
+[phases.build]
+name = "Build Application"
+cmds = []
+
+[start]
+cmd = "cd backend && npm start"

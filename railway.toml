@@ -1,6 +1,10 @@
 [build]
 builder = "nixpacks"
+nixpacksVersion = "latest"
 
 [deploy]
 startCommand = "./start.sh"
 restartPolicyType = "never"
+
+[environment]
+NODE_ENV = "production"

@@ -1,9 +1,8 @@
 # Nixpacks configuration for MANOX backend
-[phases.setup]
-name = "Setup Node.js"
+[variables]
+NODE_ENV = "production"
 
 [phases.install]
-name = "Install Dependencies"
 cmds = ["cd backend && npm install"]
 
 [start]

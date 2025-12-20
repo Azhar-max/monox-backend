@@ -133,9 +133,9 @@ Fully responsive design that works on:
 
 ## 📦 Deployment
 
-### Netlify + Render Deployment (Recommended)
+### Frontend + Backend Deployment
 
-For detailed deployment instructions using Netlify for frontend and Render for backend, see [NETLIFY_DEPLOYMENT_GUIDE.md](NETLIFY_DEPLOYMENT_GUIDE.md).
+The application can be deployed using various hosting providers for both frontend and backend.
 
 ### Deployment Steps
 
@@ -147,21 +147,20 @@ For detailed deployment instructions using Netlify for frontend and Render for b
    - Update environment variables in `frontend/.env.production`
    - Ensure API URL points to your backend
 
-3. **Deploy Frontend to Netlify**
-   - Create Netlify project
-   - Connect to GitHub repository
-   - Configure build settings
+3. **Deploy Frontend**
+   - You can deploy the frontend to various platforms like Vercel, Netlify, or similar services
+   - Build command: `npm run build`
+   - Output directory: `dist`
 
-4. **Deploy Backend to Render**
-   - Create Render web service
-   - Connect to GitHub repository
-   - Configure environment variables
+4. **Deploy Backend**
+   - Deploy the backend to platforms like Render, Railway, or similar services
+   - Build command: `npm install`
+   - Start command: `npm start`
 
 5. **Final Configuration**
-   - Update CORS settings in backend
+   - Update CORS settings in backend with your frontend URL
    - Verify API connectivity
    - Test all functionality
-
 ## 🧪 Testing
 
 - Frontend tests: `cd frontend && npm test`

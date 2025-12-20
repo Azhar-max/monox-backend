@@ -198,9 +198,8 @@ npm run preview  # Preview production build locally
 ### Backend
 - Set `NODE_ENV=production`
 - Use a cloud MongoDB (Atlas, Azure Cosmos, etc.)
-- Deploy to Heroku, Railway, Netlify, AWS, or similar
+- Deploy to Heroku, Railway, Render, AWS, or similar
 - Update `FRONTEND_URL` to your production domain
-
 ---
 
 ## 🔒 Security Notes
